@@ -1,3 +1,8 @@
+const user = {
+    email: 'ambrose@gmail.com',
+    password: '123456'
+}
+
 export const login_success = () => {
     return {
         type: 'LOGIN_SUCCESS'
@@ -19,9 +24,9 @@ export function auth(email,password) {
 }
 
 export const loginUser = (email, password) => dispatch => {
-    if(auth(email, password) == true){
-        dispatch(login_success)
+    if(auth(email, password)) {
+        dispatch(login_success())
     } else {
-        dispatch(login_error)
+        dispatch(login_error())
     }   
 }
