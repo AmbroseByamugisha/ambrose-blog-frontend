@@ -1,4 +1,10 @@
 import React from 'react'
+import { connect } from 'react-redux' 
+import { log_out } from '../actions'
+import Button from '@material-ui/core/Button'
+import { makeStyles } from '@material-ui/core/styles'
+import { Link } from 'react-router-dom'
+import '../index.css'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -13,13 +19,21 @@ const useStyles = makeStyles(theme => ({
   }));
   
 
-function SignedInLinks() {
-    const { classes } = useStyles()
+function SignedInLinks(props) {
+    const classes = useStyles()
     return(
         <div className={classes.root}>
-            <Button id="right-nav" color="inherit">Login</Button>
+            <Button id="right-nav" color="inherit" onClick={props.logOut}>
+                Logout
+            </Button>
         </div>
     )
 } 
 
-export default SignedInLinks
+const mapDispatchToProps = (dispatch) => {
+    return {
+      logOut: () => dispatch(log_out())
+    }
+  }
+  
+export default connect(null, mapDispatchToProps)(SignedInLinks)
