@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { delete_post } from '../actions'
+import { delete_post, edit_post } from '../actions'
   
 class PostButtons extends Component{
   handleDeletePost = (event) => {
@@ -11,16 +11,24 @@ class PostButtons extends Component{
     //console.log(posts)
     event.preventDefault()
   }
-    render(){
-    return(
-        <div>
-            <button>Edit</button>
-              <button onClick={this.handleDeletePost}>
-                Delete 
-              </button>
-        </div>
+  handleEditPost = (event) => {
+    const { dispatch } = this.props
+    dispatch(edit_post(this.props.post[0]["id"]))
+    console.log(this.props.post[0]["id"])
+    console.log(this.props)
+    //console.log(posts)
+    event.preventDefault()
+  }
+  render(){
+  return(
+      <div>
+          <button onClick={this.handleEditPost}>Edit</button>
+            <button onClick={this.handleDeletePost}>
+              Delete 
+            </button>
+      </div>
     )
-    }
+  }
 }
 
 const mapStateToProps = (state) => {
