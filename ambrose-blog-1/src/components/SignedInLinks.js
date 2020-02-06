@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { log_out } from '../actions'
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
-import { Link } from 'react-router-dom'
 import '../index.css'
 
 const useStyles = makeStyles(theme => ({
