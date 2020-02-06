@@ -15,6 +15,12 @@ export const login_error = () => {
     }
 }
 
+export const log_out = () => {
+    return {
+        type: 'LOGOUT_SUCCESS'
+    }
+}
+
 export function auth(email,password) {
     if(email === user.email && password === user.password){
         return true
@@ -30,3 +36,4 @@ export const loginUser = (email, password) => dispatch => {
         dispatch(login_error())
     }   
 }
+
