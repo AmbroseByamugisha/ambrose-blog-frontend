@@ -23,4 +23,6 @@ class PostSummary extends Component {
         );
     }
 }
+
+
 export default connect()(PostSummary)
