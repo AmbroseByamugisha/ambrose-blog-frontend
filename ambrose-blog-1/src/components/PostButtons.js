@@ -1,23 +1,32 @@
-import React from 'react'
-import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
-import { makeStyles } from '@material-ui/core/styles'
-
-const useStyles = makeStyles(theme => ({
-    root: {
-      color: theme.palette.text.primary,
-    },
-  }));
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { delete_post } from '../actions'
   
-
-function PostButtons(){
-    const classes = useStyles()
+class PostButtons extends Component{
+  handleDeletePost = (event) => {
+    const { dispatch } = this.props
+    dispatch(delete_post(this.props.post[0]["id"]))
+    console.log(this.props.post[0]["id"])
+    console.log(this.props)
+    //console.log(posts)
+    event.preventDefault()
+  }
+    render(){
     return(
-        <div className={classes.root}>
+        <div>
             <button>Edit</button>
-            <DeleteOutlinedIcon />
-            <button>Delete</button>
+              <button onClick={this.handleDeletePost}>
+                Delete 
+              </button>
         </div>
     )
+    }
 }
 
-export default PostButtons
+const mapStateToProps = (state) => {
+  return {
+    posts: state.posts.posts
+  }
+}
+
+export default connect(mapStateToProps)(PostButtons)
