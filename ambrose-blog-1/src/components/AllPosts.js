@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import EditPost from './EditPost'
+//import EditPost from './EditPost'
 import CreatePost from './CreatePost'
 import PostSummary from './PostSummary'
 import { Link } from 'react-router-dom'
@@ -27,7 +27,7 @@ class AllPost extends Component {
         {console.log(posts)}
         {posts.map((post) => (
         <div key={post.id}>
-          {post.editing ? <EditPost post={post} key={post.id} /> : 
+          {//post.editing ? <EditPost post={post} key={post.id} /> : 
           <Link to={'/post/' + post.id} key={post.id}><PostSummary post={post}
           key={post.id} /></Link> }
         </div>
