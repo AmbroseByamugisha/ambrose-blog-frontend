@@ -17,6 +17,11 @@ export default(
                 loggedIn: false,
                 loginError: true
             }
+        case 'LOGOUT_SUCCESS':
+            return {
+                ...state,
+                loggedIn: false
+            }
         default:
             return state
     }
